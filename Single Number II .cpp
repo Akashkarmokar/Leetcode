@@ -21,3 +21,25 @@ Approach :
  
  Same as the above approach 
   (3*(a+b+c)-(a+a+a+b+b+b+c))/2= c;
+
+
+
+// Another Solution : 
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int res = 0;
+        for(int i=0;i<32;i++)
+        {
+            int count = 0;
+            for(int num:nums)
+            {
+                count+=(num>>i) & 1;
+            }
+            if(count%3)
+                res |=1<<i;
+        }
+        return res;
+    }
+};
