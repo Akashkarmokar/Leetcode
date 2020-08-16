@@ -1,0 +1,55 @@
+class MyHashSet {
+    int numBuckets;
+    vector<vector<int>>Buckets;
+    int gen_ind(int key)
+    {
+        return key%numBuckets;
+    }
+public:
+    /** Initialize your data structure here. */
+    MyHashSet() {
+        numBuckets = 15000;
+        Buckets = vector<vector<int>>(numBuckets,vector<int>{});
+    }
+    
+    void add(int key) {
+        int index = gen_ind(key);
+        if(find(Buckets[index].begin(),Buckets[index].end(),key)==Buckets[index].end())
+        {
+            Buckets[index].push_back(key);
+        }
+    }
+    
+    void remove(int key) {
+        int index = gen_ind(key);
+        auto it = find(Buckets[index].begin(),Buckets[index].end(),key);
+        if(it!=Buckets[index].end())
+        {
+            Buckets[index].erase(it);
+        }
+    }
+    
+    /** Returns true if this set contains the specified element */
+    bool contains(int key) {
+        int index = gen_ind(key);
+        if(find(Buckets[index].begin(),Buckets[index].end(),key)==Buckets[index].end())
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+};
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */
+ 
+ 
+ 
