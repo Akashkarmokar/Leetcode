@@ -1,3 +1,6 @@
+
+// Explanation Link: https://leetcode.com/problems/intersection-of-two-linked-lists/discuss/1092898/JS-Python-Java-C%2B%2B-or-Easy-O(1)-Extra-Space-Solution-w-Visual-Explanation
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
