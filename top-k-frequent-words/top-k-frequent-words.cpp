@@ -25,12 +25,12 @@ public:
                 minPQ.pop();
             }
         }
-        vector<string> ans;
-        while(!minPQ.empty()){
-            ans.push_back(minPQ.top().second);
+        vector<string> ans(k);
+        while(!minPQ.empty() && k--){
+            ans[k]=minPQ.top().second;
             minPQ.pop();
         }
-        reverse(ans.begin(),ans.end());
+        // reverse(ans.begin(),ans.end());
         return ans;
     }
 };
