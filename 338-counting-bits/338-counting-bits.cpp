@@ -1,12 +1,10 @@
 class Solution {
 public:
     int getBit(int n){
-        int count = 0;
-        while(n){
-            count += (n&1);
-            n = n >> 1;
+        if(n==0){
+            return 0;
         }
-        return count;
+        return (n&1)+getBit(n>>1);
     }
     vector<int> countBits(int n) {
         vector<int> ans;
