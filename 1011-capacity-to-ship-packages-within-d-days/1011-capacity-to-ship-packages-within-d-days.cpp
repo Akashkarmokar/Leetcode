@@ -22,22 +22,22 @@ bool good(vector<int>& weights,int days,int capacity){
 }
 public:
     int shipWithinDays(vector<int>& weights, int days) {
-        int l = 0; //bad
-        for(int i=0;i<weights.size();i++){
-            l = max(l,weights[i]);
-        }
-        int r = 25e6+5; //good
-        int ans;
+        int l = *max_element(weights.begin(),weights.end()) - 1;
+        int r = accumulate(weights.begin(),weights.end(),0);
         
-        while(l<=r){ // TimeComplexity: O(nlogn)
+        int ans;
+        while(r>l+1){
             int mid = (l+r)/2;
-            if(good(weights,days,mid)){ // TimeComplexity: O(n)
-                r = mid-1;
-                ans = mid;
+            if(good(weights,days,mid)){
+                // r = mid - 1;
+                // ans = mid;
+                r = mid;
             }else{
-                l = mid+1;
+                // l = mid + 1;
+                l = mid;
             }
         }
-        return ans;
+        // return ans;
+        return r;
     }
 };
