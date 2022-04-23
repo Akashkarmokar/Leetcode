@@ -26,10 +26,8 @@ public:
         for(int i=0;i<weights.size();i++){
             l = max(l,weights[i]);
         }
-        int r = 0; //good
-        for(int i=0;i<weights.size();i++){
-            r += weights[i];
-        }
+        int r = 25e6+5; //good
+        
         
         while(r>l){ // TimeComplexity: O(nlogn)
             int mid = (l+r)/2;
