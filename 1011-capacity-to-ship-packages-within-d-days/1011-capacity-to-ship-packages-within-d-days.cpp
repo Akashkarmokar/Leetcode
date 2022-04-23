@@ -27,16 +27,17 @@ public:
             l = max(l,weights[i]);
         }
         int r = 25e6+5; //good
+        int ans;
         
-        
-        while(r>l){ // TimeComplexity: O(nlogn)
+        while(l<=r){ // TimeComplexity: O(nlogn)
             int mid = (l+r)/2;
             if(good(weights,days,mid)){ // TimeComplexity: O(n)
-                r = mid;
+                r = mid-1;
+                ans = mid;
             }else{
                 l = mid+1;
             }
         }
-        return r;
+        return ans;
     }
 };
