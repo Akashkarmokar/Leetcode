@@ -22,9 +22,8 @@ bool good(vector<int>& weights,int days,int capacity){
 }
 public:
     int shipWithinDays(vector<int>& weights, int days) {
-        int l = *max_element(weights.begin(),weights.end()) - 1;
-        int r = accumulate(weights.begin(),weights.end(),0);
-        
+        int l = *max_element(weights.begin(),weights.end()) - 1; // bad weight
+        int r = accumulate(weights.begin(),weights.end(),0); // good weight
         int ans;
         while(r>l+1){
             int mid = (l+r)/2;
