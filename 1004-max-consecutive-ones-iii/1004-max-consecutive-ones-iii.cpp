@@ -1,3 +1,4 @@
+
 class Solution {
 public:
     int longestOnes(vector<int>& nums, int k) {
@@ -17,3 +18,7 @@ public:
         return ans;
     }
 };
+
+/**
+https://leetcode.com/problems/max-consecutive-ones-iii/discuss/1304346/Simple-Solution-w-Explanation-or-Sliding-Window-Approach-with-Comments
+*/
