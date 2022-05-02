@@ -1,32 +1,43 @@
 /**
-    Time Complexity: O(N+M)
-    Space Complexity: O (N+M)
+    TimeComplexity: O(M+N)
+    SpaceComplexity: O(1)
 */
 class Solution {
 public:
     bool backspaceCompare(string s, string t) {
-        stack<char> forS, forT;
-        for(auto ch: s){
-            if(ch=='#' && !forS.empty()){
-                forS.pop();
-            }else if(ch == '#' && forS.empty()){
-                continue;
-            }else{
-                forS.push(ch);
+        int i = s.size() - 1;
+        int j = t.size() - 1;
+        
+        int skipForS = 0;
+        int skipForT = 0;
+        while( i>=0 || j>=0){
+            while(i>=0){
+                if(s[i]=='#'){
+                    skipForS++;
+                    i--;
+                }else if(skipForS > 0){
+                    skipForS--;
+                    i--;
+                }else{
+                    break;
+                }
             }
-        }
-        for(auto ch: t){
-            if(ch=='#' && !forT.empty()){
-                forT.pop();
-            }else if(ch == '#' && forT.empty()){
-                continue;
-            }else{
-                forT.push(ch);
+            while(j>=0){
+                if(t[j]=='#'){
+                    skipForT++;
+                    j--;
+                }else if(skipForT > 0){
+                    skipForT--;
+                    j--;
+                }else{
+                    break;
+                }
             }
+            if(i>=0 && j>=0 && (s[i] != t[j])){ return false; }
+            if((i>=0) != (j>=0)) { return false; }
+            i--;
+            j--;
         }
-        if(forS == forT){
-            return true;
-        }
-        return false;
+        return true;
     }
 };
